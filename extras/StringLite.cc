@@ -8,24 +8,24 @@ class StringLite
     int length;
 
 public:
-    StringLite(const char *str) : length(std::strlen(str))
+    StringLite(const char *str) : length(std::strlen(str)) //using strlen for calculating the length of string
     {
-        data = new char[length + 1];
+        data = new char[length + 1]; //allocating new char of length(length + 1) to pointer data
         std::strcpy(data, str);
     }
 
-    StringLite(const StringLite &other) : length(other.length)
+    StringLite(const StringLite &other) : length(other.length) //checking the length of current string
     {
-        data = new char[length + 1];
-        std::strcpy(data, other.data);
+        data = new char[length + 1]; //allocating new char of lenth(length + 1) 
+        std::strcpy(data, other.data); // copying the data of previous string to current string
     }
     StringLite &operator=(const StringLite &other)
     {
-        if (this == &other)
+        if (this == &other)//if current variable = the value other is refering to return the value stored in this pointer
             return *this;
-        delete[] data;
+        delete[] data;// deleat that value 
 
-        length = other.length;
+        length = other.length; // then just store value at different same as previous at different location
         data = new char[length + 1];
         std::strcpy(data, other.data);
         return *this;
@@ -33,14 +33,14 @@ public:
 
     ~StringLite()
     {
-        delete[] data;
+        delete[] data; //freeing the memory of heap finally
     }
 };
 
 int main()
 {
     StringLite a("hello");
-    StringLite b = a;
+    StringLite b = a;//copy constructor
     StringLite c("world");
-    c = a;
+    c = a;//copy assiginment
 }
