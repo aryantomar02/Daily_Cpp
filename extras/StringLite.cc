@@ -8,7 +8,7 @@ class StringLite
     int length;
 
 public:
-    StringLite(const char *str) : length(std::strlen(str)) //using strlen for calculating the length of string
+    StringLite(const char *str) : length(std::strlen(str)) ///using strlen for calculating the length of string
     {
         data = new char[length + 1]; //allocating new char of length(length + 1) to pointer data
         std::strcpy(data, str);
