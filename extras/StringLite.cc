@@ -30,6 +30,26 @@ public:
         std::strcpy(data, other.data);
         return *this;
     }
+    StringLite(StringLite&& other) noexcept : data{other.data}, length{other.length}
+    {
+        other.data = nullptr;
+        other.length = 0;
+    }
+
+    StringLite& operator=(StringLite&& other) noexcept{
+        if(this==&other) return *this;
+
+        delete[] data;
+
+        data=other.data;
+        length=other.length;
+
+        other.data=nullptr;
+        length=0;
+        
+        return *this;
+
+    }
 
     ~StringLite()
     {
@@ -43,4 +63,5 @@ int main()
     StringLite b = a;//copy constructor
     StringLite c("world");
     c = a;//copy assiginment
+    c = std::move (b);
 }
