@@ -34,6 +34,12 @@ public:
         return *this;
     }
 
+    friend std::ostream& operator<<(std::ostream& os, const MyClass& obj)
+    {
+        os << "x= " << obj.x << ", d= " << obj.d;
+        return os;
+    }
+
 };
 
 MyClass operator+(MyClass lhs, const MyClass& rhs){
@@ -48,5 +54,8 @@ int main() {
     MyClass obj3 = obj + obj2;
     obj+=obj2;
     std::cout << "Used the overloaded += operator." << std::endl;
+
+    std::cout << obj << "\n";
+    std::cout << obj3 << "\n";
 }
 
