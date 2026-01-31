@@ -8,7 +8,7 @@ public:
     {
         std::cout << "Created" << std::endl;
     }
-    HeapNumber(const HeapNumber &others) : p{new int(*others.p)}
+    HeapNumber(const HeapNumber &others) : p{others.p ? new int(*others.p) : nullptr}
     {
         std::cout << "created" << std::endl;
     }
