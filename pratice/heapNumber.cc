@@ -1,20 +1,25 @@
 #include <iostream>
-class HeapNumber {
-    int* p;
+class HeapNumber
+{
+    int *p;
+
 public:
-    HeapNumber(int v) : p{new int(v)}{
+    HeapNumber(int v) : p{new int(v)}
+    {
         std::cout << "Created" << std::endl;
     }
-    HeapNumber(const HeapNumber& others) : p{new int(*others.p)}
+    HeapNumber(const HeapNumber &others) : p{new int(*others.p)}
     {
         std::cout << "created" << std::endl;
     }
-    ~HeapNumber() {
+    ~HeapNumber()
+    {
         delete p;
         std::cout << "destroyed" << std::endl;
     }
 };
-int main() {
+int main()
+{
     HeapNumber a(10);
     HeapNumber b = a;
 }
