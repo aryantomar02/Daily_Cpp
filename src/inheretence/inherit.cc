@@ -7,21 +7,23 @@ public:
     }
 };
 
-class derived : public Base {
+class Derived : public Base {
 private:
     int* heapInt;
 public:
-    derived(int value) {
+    Derived(int value) {
         heapInt = new int(value);
         std::cout << "Derived: Allocated heapInt with value " << *heapInt << std::endl;
     }
-    ~derived() {
+    ~Derived() {
+        delete heapInt;
+        heapInt = nullptr;
         std::cout << "Derived destroyed" << std::endl;
     }
 };
 
 int main() {
-    Base* p= new derived(42);
+    Base* p= new Derived(42);
     delete p;
     return 0;
 }
