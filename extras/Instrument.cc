@@ -69,7 +69,7 @@ int main() {
     for(Instrument* inst : portfolio) {
         delete inst; 
     }
-    portfolio.clear();
+    portfolio.clear() ;
     
     return 0;
 }
